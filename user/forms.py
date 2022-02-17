@@ -7,7 +7,7 @@ from user.models import ExtendUser
 class UserForm(UserCreationForm):
     class Meta:
         model = ExtendUser
-        fields = ['first_name', 'last_name', 'username', 'email', 'age', 'address']
+        fields = ['first_name', 'last_name', 'username', 'profile_picture', 'email', 'age', 'address']
         widgets = {
             'first_name': TextInput(attrs={'placeholder': 'insert first name', 'class': 'form-control'}),
             'last_name': TextInput(attrs={'placeholder': 'insert last name', 'class': 'form-control'}),
