@@ -24,18 +24,25 @@
         <!-- Left Column -->
         <div class="w3-col m3">
             <!-- Profile -->
-            <div class="w3-card w3-round w3-white">
-                <div class="w3-container">
-                    <h4 class="w3-center">My Profile</h4>
-                     {# forul era problema #}
-                    <p class="w3-center"><img src="../../media/avatar_profile.png" class="w3-circle"
-                                              style="height:106px;width:106px" alt="profile_picture"></p>
-                    <hr>
-                    <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{ user.username }}</p>
-                    <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ address }}</p>
-                    <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{ profile_pic }}</p>
-                </div>
-            </div>
+            {% for ext_user in all_ext_user %}
+                {% if request.user.id == ext_user.id %}
+                    <div class="w3-card w3-round w3-white">
+                        <div class="w3-container">
+                            <h4 class="w3-center">My Profile</h4>
+                            <p class="w3-center"><img src="{{ ext_user.profile_picture.url }}" class="w3-circle"
+                                                      style="height:106px;width:106px" alt="profile_picture"></p>
+                            <hr>
+                            <p>
+                                <i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{ request.user.username }}
+                            </p>
+                            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ ext_user.address }}</p>
+                            <p>
+                                <i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{ ext_user.age }}
+                            </p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
             <br>
 
             <!-- Accordion -->

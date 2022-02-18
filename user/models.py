@@ -3,7 +3,7 @@ from django.db import models
 
 
 class ExtendUser(User):
-    profile_picture = models.ImageField(null=True, blank=True, upload_to='profile_picture/')
+    profile_picture = models.ImageField(upload_to='profile_picture/', default='avatar.png')
     age = models.IntegerField(null=False, default='unknown')
     address = models.CharField(max_length=255, default='unknown')
 
